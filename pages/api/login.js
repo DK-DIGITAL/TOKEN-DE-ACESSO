@@ -8,11 +8,9 @@ export default function handler(req, res) {
   if (!clientId || !redirectUri) {
     return res.status(400).json({ error: "Missing environment variables." });
   }
-
-  // Adicionando os três scopes aprovados pela Amazon
   const scopes = 'advertising::audiences,advertising::campaign_management,advertising::create_account';
 
-  const authUrl = https://www.amazon.com/ap/oa?client_id=${clientId}&scope=${scopes}&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)};
+  const authUrl = https://www.amazon.com/ap/oa?client_id=${clientId}&scope=audiences,advertising::campaign_management&response_type=code&redirect_uri=${encodeURIComponent(redirectUri)};
 
   res.redirect(authUrl);
 }
